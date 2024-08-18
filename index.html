@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="aframe.min.js"></script>
+    <script src="aframe-gui.min.js"></script>
+    <title>EclipseVR | A-Frame 1.6.0</title>
+</head>
+<body>
+    <a-scene>
+        <a-sky color="#000000"></a-sky>
+        
+        <a-gui-flex-container 
+            flex-direction="column" justify-content="center" align-items="normal" component-padding="0.1" width="20" height="15"
+            panel-rounded="0.2"
+            panel-color="#ff0000"
+	        position="0 50 -1931" rotation="0 0 0"
+        >
+
+        </a-gui-flex-container>
+        <a-video position="0 50 -150" src="http://distribution.bbb3d.renderfarming.net/video/mp4/bbb_sunflower_2160p_60fps_normal.mp4" width="320" height="180"></a-video>
+        <a-entity id="cameraRig" position="0 50 0">
+            <a-camera look-controls position="0 0 0">
+                <a-gui-cursor id="cursor"
+                    raycaster="objects: [gui-interactable]"
+                    fuse="true" fuse-timeout="2000"
+                    color="#ECEFF1"
+                    visible="false"
+					hover-color="#CFD8DC"
+					active-color="#607D8B"
+                    design="reticle"
+                >
+                </a-gui-cursor>
+            </a-camera>
+        </a-entity>
+    </a-scene>
+    <script>
+        document.addEventListener("mousedown", (e)=>{
+            document.getElementById("cursor").setAttribute("material", "color: black; shader: flat");
+        });
+        document.addEventListener("mouseup", (e)=>{
+            document.getElementById("cursor").setAttribute("material", "color: gray; shader: flat");
+        });
+    </script>
+</body>
+</html>
